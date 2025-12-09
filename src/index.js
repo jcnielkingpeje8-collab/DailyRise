@@ -9,3 +9,16 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+// --- PWA REGISTRATION ---
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('Worker registered: ', registration.scope);
+      })
+      .catch((err) => {
+        console.log('Worker registration failed: ', err);
+      });
+  });
+}
