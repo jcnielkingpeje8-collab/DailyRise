@@ -74,15 +74,16 @@ const AddHabitModal = ({ habit, onClose, onSave, onDelete }) => {
   };
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-end md:items-center justify-center overflow-hidden transition-colors duration-300 ${isVisible ? 'bg-black/50' : 'bg-black/0 pointer-events-none'}`}>
+    <div className={`fixed inset-0 z-[60] flex items-end md:items-center justify-center overflow-hidden transition-colors duration-300 ${isVisible ? 'bg-black/50' : 'bg-black/0 pointer-events-none'}`}>
       {/* Backdrop tap to close */}
       <div className="absolute inset-0" onClick={handleCloseButton}></div>
 
       <form 
         onSubmit={handleSubmit} 
         className={`bg-white w-full max-h-[85vh] rounded-t-3xl md:rounded-2xl md:max-w-md overflow-hidden flex flex-col z-10 transition-all duration-300 ease-in-out transform shadow-xl ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-full md:translate-y-10 opacity-0 scale-95'}`}
+        style={{ maxHeight: '85vh' }} // Enforce max height
       >
-        {/* Header */}
+        {/* Header - Fixed Height */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-100 flex-shrink-0">
           <h2 className="text-[14px] font-medium font-[Poppins] text-dark">{habit ? 'Edit Habit' : 'Add New Habit'}</h2>
           <button 
@@ -96,8 +97,8 @@ const AddHabitModal = ({ habit, onClose, onSave, onDelete }) => {
           </button>
         </div>
 
-        {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto px-4 py-4">
+        {/* Scrollable Content - Flexible Height */}
+        <div className="flex-1 overflow-y-auto px-4 py-4 min-h-0">
           {/* Habit Name */}
           <div className="mb-6">
             <label className="block text-[11px] font-[Roboto] text-gray-600 mb-2 font-medium">Habit Name</label>
@@ -156,8 +157,8 @@ const AddHabitModal = ({ habit, onClose, onSave, onDelete }) => {
           </div>
         </div>
 
-        {/* Action Buttons - Fixed at Bottom */}
-        <div className="flex-shrink-0 bg-white border-t border-gray-100 px-4 py-4 space-y-3 pb-8 md:pb-4">
+        {/* Action Buttons - Fixed at Bottom with Safe Area */}
+        <div className="flex-shrink-0 bg-white border-t border-gray-100 px-4 py-4 space-y-3 pb-8 md:pb-4 safe-bottom">
           <button 
             type="submit"
             className="btn-primary w-full py-3 rounded-lg font-medium text-white text-[11px] font-[Roboto]"

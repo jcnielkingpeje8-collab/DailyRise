@@ -175,20 +175,6 @@ const Home = () => {
     <Layout>
       <Header title="Daily Rise" />
 
-      {/* --- DEBUG BOX (REMOVE LATER) --- */}
-      <div className="bg-black text-green-400 p-4 mb-4 rounded text-xs font-mono overflow-auto">
-        <p><strong>Logged In As:</strong> {user?.email}</p>
-        <p><strong>User ID (App):</strong> {user?.id}</p>
-        <p><strong>Habits Found:</strong> {habits.length}</p>
-        <p><strong>Habit IDs:</strong> {habits.map(h => h.id).join(', ')}</p>
-        <button
-          onClick={() => console.log('Current User:', user)}
-          className="bg-gray-800 text-white px-2 py-1 mt-2 rounded"
-        >
-          Log User to Console
-        </button>
-      </div>
-      {/* ------------------------------- */}
       <div className="px-4 py-4">
         {/* Desktop Title (Visible only on md screens and up) */}
         <div className="hidden md:flex justify-between items-center mb-8">
